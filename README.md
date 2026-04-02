@@ -3,7 +3,7 @@ A simple chatbot on telegram using the smallest and dumbest llm
 
 # roadmap
 
-## Fase 1: Configurazione dell'Ambiente
+## [X] Fase 1: Configurazione dell'Ambiente
  * Crea una cartella di progetto:
    mkdir telegram-llm-bot && cd telegram-llm-bot
 
@@ -18,51 +18,21 @@ source venv/bin/activate  # Su Windows: venv\Scripts\activate
    * Scarica e avvia Ollama.
    * Scarica il modello da terminale: ollama pull qwen2.5:0.5b
      
-## Fase 2: Registrazione del Bot
+## [X] Fase 2: Registrazione del Bot
  * Apri Telegram e cerca @BotFather.
  * Invia /newbot e scegli un nome e uno username per il bot.
  * Copia il Token API ricevuto. Lo useremo più avanti.
 
-## Fase 3: Esercizio TDD (Sviluppo Logica)
+## [X] Fase 3: Esercizio TDD (Sviluppo Logica)
 Iniziamo separando la logica dell'IA dal codice di Telegram.
 ### Step 3.1: Scrittura del primo test (test_logic.py)
 Crea un file di test per definire cosa ti aspetti dalla funzione che interroga Qwen.
-```
-import pytest
-from logic import get_ai_response
-
-def test_get_ai_response_valid_input(mocker):
-    # Mockiamo la chiamata a Ollama per non dipendere dal modello nei test
-    mock_ollama = mocker.patch('ollama.chat')
-    mock_ollama.return_value = {'message': {'content': 'Ciao, come posso aiutarti?'}}
-    
-    res = get_ai_response("Ciao")
-    assert res == "Ciao, come posso aiutarti?"
-
-def test_get_ai_response_empty_input():
-    # Testiamo un caso limite senza mock
-    res = get_ai_response("")
-    assert res == "Messaggio vuoto."
-```
 
 ### Step 3.2: Implementazione della logica (logic.py)
 Scrivi il codice minimo per far passare i test sopra.
-```
-import ollama
-
-def get_ai_response(text):
-    if not text.strip():
-        return "Messaggio vuoto."
-    
-    response = ollama.chat(model='qwen2.5:0.5b', messages=[
-        {'role': 'system', 'content': 'Rispondi in modo conciso e in italiano.'},
-        {'role': 'user', 'content': text},
-    ])
-    return response['message']['content']
-```
 Esegui i test con il comando: pytest
 
-## Fase 4: Implementazione del Bot Telegram
+## [ ] Fase 4: Implementazione del Bot Telegram
 Crea il file principale bot.py che utilizzerà la logica testata nella Fase 3.
  * Crea bot.py:
 ```
@@ -89,7 +59,7 @@ if __name__ == '__main__':
     app.run_polling()
 ```
 
-## Fase 5: Verifica Finale e Deployment
+## [ ] Fase 5: Verifica Finale e Deployment
  * Esegui un'ultima volta i test: Assicurati che tutto sia verde.
  * Avvia il bot: python bot.py
  * Test su Telegram: Invia un messaggio al tuo bot e osserva la velocità di risposta di Qwen 0.5B.
