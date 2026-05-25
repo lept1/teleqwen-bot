@@ -16,7 +16,7 @@ source venv/bin/activate  # Su Windows: venv\Scripts\activate
 
  * Configura l'LLM:
    * Scarica e avvia Ollama.
-   * Scarica il modello da terminale: ollama pull qwen2.5:0.5b
+   * Scarica il modello da terminale: ollama pull [model name]
      
 ## [X] Fase 2: Registrazione del Bot
  * Apri Telegram e cerca @BotFather.
@@ -32,7 +32,7 @@ Crea un file di test per definire cosa ti aspetti dalla funzione che interroga Q
 Scrivi il codice minimo per far passare i test sopra.
 Esegui i test con il comando: pytest
 
-## [ ] Fase 4: Implementazione del Bot Telegram
+## [x] Fase 4: Implementazione del Bot Telegram
 Crea il file principale bot.py che utilizzerà la logica testata nella Fase 3.
  * Crea bot.py:
 ```
@@ -59,11 +59,8 @@ if __name__ == '__main__':
     app.run_polling()
 ```
 
-## [ ] Fase 5: Verifica Finale e Deployment
+## [x] Fase 5: Verifica Finale e Deployment
  * Esegui un'ultima volta i test: Assicurati che tutto sia verde.
  * Avvia il bot: python bot.py
  * Test su Telegram: Invia un messaggio al tuo bot e osserva la velocità di risposta di Qwen 0.5B.
 
-## Suggerimenti extra per Qwen 0.5B:
- * Prompt Injection: Se il bot risponde in inglese, prova ad appesantire il system content in logic.py forzando l'italiano con un tono imperativo.
- * Timeout: Ollama è locale, quindi la latenza è minima, ma se il tuo PC è sotto sforzo, potresti aggiungere una gestione dei timeout nel file logic.py.
