@@ -5,6 +5,12 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  workflow_dispatch:
+    inputs:
+      deploy_env:
+        description: "Name to test"
+        required: true
+        default: "Baudo"
 
 jobs:
 
@@ -15,4 +21,4 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: echo "TEST"
+      run: echo "Hello Piripippo ${{ github.event.inputs.deploy_env }}"
